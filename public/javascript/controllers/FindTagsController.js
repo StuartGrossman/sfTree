@@ -19,7 +19,7 @@
 		vm.infoWindow = new google.maps.InfoWindow();
 		// vm.markers = [];
 		
-		vm.makeMap = function(lat, lng, pin){
+		vm.makeMap = function(lat, lng, pin, currentLocation){
 			var myLatLng = {lat: lat, lng: lng};
 			
 			
@@ -33,7 +33,19 @@
 	 			 		for(var k = 0; k< pin.length; k ++){
 	 			 			vm.createMarker(pin[k])
 	 			 		}
-
+	 			 		function getCurrentLocationPin(lat, lng){
+		 			 		var marker = new google.maps.Marker({
+					            map: vm.map,
+					            position: new google.maps.LatLng(lat, lng),
+					            title: 'Your Current Location'
+					        });
+					        google.maps.event.addListener(marker, 'click', function(){
+					        	console.log(marker)
+					            vm.infoWindow.setContent('<h2>' + 'Your Current Location' + '</h2>');
+					            vm.infoWindow.open(vm.map, marker);
+					        });
+				    	}
+				    	getCurrentLocationPin(lat, lng)
 	 			 
 						function toggleBounce() {
 						  if (marker.getAnimation() !== null) {
@@ -90,7 +102,7 @@
 
 		vm.refreshLocation = function(){
 			getGeo();
-
+			vm.mapStatus = true;
 			getPins(vm.allpins, vm.currentLat, vm.currentLng)
 			console.log(vm.allpins)
 			// console.log(vm.allpins, vm.currentLat, vm.currentLng);
@@ -126,7 +138,7 @@
 					}
 					
 				}
-				vm.makeMap(lat, lng, vm.displayPinArray)
+				vm.makeMap(lat, lng, vm.displayPinArray, 'Current Location')
 				// console.log(allpins)
 				
 				
@@ -156,12 +168,6 @@
 				// getPins(vm.allpins);
 				
 				
-		}
-
-		
-
-		
-
-				
+		}				
 	}
 })();

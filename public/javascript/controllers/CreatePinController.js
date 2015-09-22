@@ -9,14 +9,14 @@
 		vm.class = "fadeInRight";
 
 
-		HomeFactory.getLocation().then(function(res){
-			// console.log(res.location.lat)
-			vm.pin.lat = res.location.lat
-			vm.pin.lng = res.location.lng
+		// HomeFactory.getLocation().then(function(res){
+		// 	// console.log(res.location.lat)
+		// 	vm.pin.lat = res.location.lat
+		// 	vm.pin.lng = res.location.lng
 			
-		})
-		// vm.pin.lat = 37.114445
-		// vm.pin.lng = -122.190023
+		// })
+		vm.pin.lat = 37.805986
+		vm.pin.lng = -122.258091
 
 		vm.CreatePin = function(){
 			vm.pin.created = new Date(vm.pin.created + '-1-1');
@@ -30,6 +30,7 @@
 				$timeout(function() {
 					$state.go('Home');
 					vm.class = "fadeInRight"
+					vm.pin = {}
 				}, 400);
 				
 			})

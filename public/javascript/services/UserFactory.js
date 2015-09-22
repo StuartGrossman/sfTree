@@ -66,7 +66,9 @@
 				// o.status.isLoggedIn = true;
 				// o.status.username = user.username;
 				q.resolve();
-			});
+			}).error(function(){
+				q.reject('400 error');
+			})
 			return q.promise;
 		};
 
@@ -80,8 +82,11 @@
 				setToken(res.token);
 				console.log(res.token);
 				$rootScope._user = isLoggedIn();
-				q.resolve();
-			});
+				q.resolve(res);
+			}).error(function(){
+				console.log('in error')
+				q.reject('400 error');
+			})
 			return q.promise;
 		};
 

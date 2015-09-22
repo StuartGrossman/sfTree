@@ -7,7 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap_theme.css">
 	<link rel="stylesheet" type="text/css" href="/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
-	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/cosmo/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootwatchYeti.css">
+	<link rel="stylesheet" type="text/css" href="/css/stylish-portfolio.css">
 </head>
 <body>
 	<div  ng-controller="NavBarController as nav">
@@ -25,45 +26,97 @@
 
 			      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				      <a class="navbar-brand" ui-sref="Home">Tag</a>
-				      <a ng-show="nav.status.username" class="navbar-brand" ui-sref="CreatePin">Create Pin</a>
+				      <a ng-show="nav.status.username" class="navbar-brand" ui-sref="CreatePin">Create Tag</a>
 				      <a ng-show="!nav.status.username" class="navbar-brand" ui-sref="RegisterUser">Register</a>
+
 					  <a ng-show="!nav.status.username" class="navbar-brand" ui-sref="LogIn">Login</a>
-
-					  <button class="btn btn-primary" ui-sref="FindTags">Find Tags!</button>
-
 					  <a ng-show="nav.status.username" style="text-align: right" class="navbar-brand pull-right" ng-click="nav.logout();">LogOut</a>
 					  <a ng-show="nav.status.username" class="navbar-brand pull-right" ui-sref="Profile" ng-click="nav.getUser()">{{nav.status.username}}</a>
 
 			  	  </div>
-
-			  
-
-			     
-				  
-				
-				  
-
-				 
-			      
-			    <!-- 
-			      <a ng-show="!nav.status.username"class="navbar-brand navbar-right" ui-sref="">{{nav.status.username}}</a>
-				  <a ng-show="!nav.status.username"class="navbar-brand" ui-sref="LogOut">Logout</a>
-				  {{nav.status.username}} -->
-			    
-					 
+                  	 
 			    </div>
 			</div>
+		</div>
 
-			
-		
-		</div>
-		<div>
-			<center>
-				
-			</center>
-		</div>
-		<ui-view></ui-view>
 	</div>
+
+	 
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1 id="getWhite">Tag Your Adventure</h1>
+            <h3 id="getWhite">Add to the global Collections of Tags</h3>
+            <br>
+            <button class="btn btn-primary" ui-sref="FindTags">Find Tags!</button>
+        </div>
+    </header>
+
+    <!-- About -->
+    <section id="about" class="about">
+       
+        <ui-view></ui-view>
+        <!-- /.container -->
+    </section>
+
+    <!-- Services -->
+    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+    <section id="services" class="services bg-primary">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Our Services</h2>
+                    <hr class="small">
+                    <div class="row">
+                   
+                        <div class="col-md-6 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Find Tags Near you</strong>
+                                </h4>
+                                <p>Find all tags near your Location</p>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-flask fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Login & User Creation</strong>
+                                </h4>
+                                <p>Beautiful User Creation Portal and Home Portal.</p>
+                                
+                            </div>
+                        </div>
+               <!--          <div class="col-md-3 col-sm-6">
+                            <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-shield fa-stack-1x text-primary"></i>
+                            </span>
+                                <h4>
+                                    <strong>Save and Store your Favorite tags</strong>
+                                </h4>
+                                <p>Saving is just an easy click away</p>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
 	
 	
 	<!-- Ext Libs -->
@@ -76,6 +129,7 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR4uInfVhGOVQPhgf8wkvxHpiEEYerVq8">
     </script>
 	<script src="/javascript/app.js"></script>
+	
 	<!-- Factories -->
 	<script src="/javascript/services/HomeFactory.js"></script>
 	<script src="/javascript/services/UserFactory.js"></script>

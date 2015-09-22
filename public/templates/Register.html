@@ -1,3 +1,5 @@
+<div ng-controller="NavBarController as nav">
+
 <form class="well container animated" ng-class="nav.class" ng-submit="nav.register()">
 	<label>Username</label> <br/>
 	<input class="form-control" placeholder="Username..." ng-model="nav.user.username" required />
@@ -15,3 +17,5 @@
 		<button type="submit" class="btn btn-lg btn-success" ng-disabled="!nav.user.username || !nav.user.name || !nav.user.email || !nav.user.image || !nav.user.password || !(nav.user.password === nav.user.confirmPass)" ng-click="nav.class='fadeOutLeft'">Submit</button>
 	</div>
 </form>
+
+</div>

@@ -33,6 +33,12 @@
 	width: 100%;
 	font-family: 'Source Sans Pro', sans-serif;
 }*/
+.formClass{
+	height: 100%
+}
+#getWhite{
+	color: white;
+}
 #selector{
 	width: 50px;
 

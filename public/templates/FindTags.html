@@ -1,26 +1,29 @@
 <div ng-controller="FindTagsController as vm">
-
+	<div ng-show="vm.mapStatus" id="map"></div>
 	<div class="well row">
-		<span style="font-size: 25px;">
+		<span style="font-size: 25px;" class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
 	 	Find Tags within a
 
-	 	<select class="col-md-3 selectorBox" id="selector" ng-model="vm.distanceInMiles">
+	 	<select class="selectorBox" id="selector" ng-model="vm.distanceInMiles">
 			<option>1</option>
 			<option>2</option>
 			<option selected>3</option>
 			<option>4</option>
 			<option>5</option>
+			<option>10</option>
+			<option>25</option>
+			<option>50</option>
 		</select> 
 
 		mile of your Current Location
 		</span>
-		<button ng-click="vm.refreshLocation()" class="btn btn-info searchButton col-md-3">Search! 
+		<button ng-click="vm.refreshLocation()" class="btn btn-info searchButton col-md-3 col-lg-3 col-sm-3 col-xs-3">Search! 
 		</button>
 	</div>
 
-	<div id="map"></div>
+	
 	<!-- {{vm.displayPinArray}} -->
-	<div ng-repeat="pin in vm.displayPinArray">
+	<div ng-repeat="pin in vm.displayPinArray" ng-if="pin.deleted === true">
 
 
 		<center>
@@ -28,9 +31,10 @@
 				<div class="well">
 					<p>{{pin.title}}</p>
 					<h5>{{pin.desc}}</h5>
+					<button class="btn btn-info"ui-sref="PinInfo({id: pin._id})">View Tag</button>
 				</div>
 				<img class="img-responsive"src="{{pin.img}}"><br>
-				<button class="btn btn-info"ui-sref="PinInfo({id: pin._id})">View Tag</button>
+				
 			</h1>
 		</center>
 	</div>

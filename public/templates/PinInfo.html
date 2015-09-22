@@ -6,13 +6,23 @@
 </div> -->
 
 <div ng-controller="PinInfoController as vm">
-<span><center>
-								<span><img id="commentImg" class="img-responsive img-circle" src="{{vm.pin.user.image}}"> 
-								</span>
+	<center>
 
-								<span style="font-size: 25px;">{{vm.pin.user.name}}</span> 
-								
-</span></center><br>
+	<span>
+		
+			<span>
+
+				<img id="commentImg" class="img-responsive img-circle" src="{{vm.pin.user.image}}"> 
+			</span>
+
+			<span style="font-size: 25px;">{{vm.pin.user.name}}</span> 
+										
+	</span>
+
+</center>
+
+<br>
+
 <div id="map"></div>
 
 <center>
@@ -49,55 +59,59 @@
 				
 			</div>
 	
-	
-	<div class="well container" ng-if="nav.status.id">
-		<div style="text-align:center;">
-			<button class="btn btn-lg btn-primary" ng-show="!addComment" ng-click="addComment = true;">Add Comment</button>
-			<div class="form-inline" ng-show="addComment">
-				<input class="form-control" style="width: 80%" ng-model="vm.newComment" placeholder="Comment...">
-				<button class="btn btn-success" ng-click="addComment = false; vm.createComment();">Submit</button><br><br>
-				<button class="btn btn-danger" ng-click="addComment = false;">Cancel</button>
+	<div ng-controller="NavBarController as nav">
+		<div class="" ng-if="nav.status.id">
+			<div style="text-align:center;">
+				<button class="btn btn-lg btn-primary" ng-show="!addComment" ng-click="addComment = true;">Add Comment</button>
+			<!-- 	<button class="btn btn-lg btn-primary" ng-show="!seeComment" ng-click="nav.seeComment()">See Comments</button> -->
+				<div class="form-inline" ng-show="addComment">
+					<input class="form-control" style="width: 80%" ng-model="vm.newComment" placeholder="Comment...">
+					<button class="btn btn-success" ng-click="addComment = false; vm.createComment();">Submit</button><br><br>
+					<button class="btn btn-danger" ng-click="addComment = false;">Cancel</button>
+				</div>
 			</div>
-		</div>
-		<br><br>
-		<div ng-repeat="comment in vm.pin.comments track by $index" ng-if="comment.deleted === false">
-				<div class="well">
-					
-					
-						<div class="animated rotateIn">
-							<span>
-								<img  src="{{comment.userimg}}" id="commentImg" class="img-responsive img-circle">
-								  
-								  <span style="font-size: 30px;">{{comment.name}} -  
-								  <span style="font-size: 20px;">{{comment.body}}</span>
-								</span>
-					
-								  	
-								 
-							</span>
-						</div>
-						<br>
+			<br><br>
+			<div ng-repeat="comment in vm.pin.comments track by $index" ng-if="comment.deleted === false">
+					<div class="well" >
+						<!-- ng-show="vm.seeComment == false" -->
 						
-					
-						<div ng-show="comment.user === nav.status.id">
-							<button class="btn btn-warning" ng-show="!editComment" ng-click="editComment = true;">
-							Edit</button>
-							<button class="btn btn-danger" ng-click="vm.deleteComment($index)">
-								Delete
-							</button>
-							<div class="form-inline" ng-show="editComment">
-										<input class="form-control" style="width: 80%" ng-model="vm.editedComment" placeholder="{{comment.body}}">
-										<button class="btn btn-success" ng-click="editComment = false; vm.editComment($index);">Submit</button>
-										<button class="btn btn-danger" ng-click="editComment = false;">Cancel</button>
+						
+							<div class="animated rotateIn">
+								<span>
+									<img  src="{{comment.userimg}}" id="commentImg" class="img-responsive img-circle">
+									  
+									  <span style="font-size: 30px;">{{comment.name}} -  
+									  <span style="font-size: 20px;">{{comment.body}}</span>
+									</span>
+						
+									  	
+									 
+								</span>
 							</div>
-							
 							<br>
 							
+						
+							<div ng-show="comment.user === nav.status.id">
+								<button class="btn btn-warning" ng-show="!editComment" ng-click="editComment = true;">
+								Edit</button>
+								<button class="btn btn-danger" ng-click="vm.deleteComment($index)">
+									Delete
+								</button>
+								<div class="form-inline" ng-show="editComment">
+											<input class="form-control" style="width: 80%" ng-model="vm.editedComment" placeholder="{{comment.body}}">
+											<button class="btn btn-success" ng-click="editComment = false; vm.editComment($index);">Submit</button>
+											<button class="btn btn-danger" ng-click="editComment = false;">Cancel</button>
+								</div>
+								
+								<br>
+								
+							</div>
 						</div>
+					<!-- 	<button class="btn btn-lg btn-primary" ng-show="nav.seeComment" ng-click="vm.seeComment()">Hide Comments</button> -->
 					</div>
-				</div>
+			</div>
+			
 		</div>
-		
 	</div>
 </center>
 
