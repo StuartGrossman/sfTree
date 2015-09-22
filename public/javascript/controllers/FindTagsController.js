@@ -44,6 +44,20 @@
 					            vm.infoWindow.setContent('<h2>' + 'Your Current Location' + '</h2>');
 					            vm.infoWindow.open(vm.map, marker);
 					        });
+				// 	          for (var j =0; j < pins.length; k++) {
+    // // Add the circle for this city to the map.
+				// 				    var cityCircle = new google.maps.Circle({
+				// 				      strokeColor: '#FF0000',
+				// 				      strokeOpacity: 0.8,
+				// 				      strokeWeight: 2,
+				// 				      fillColor: '#FF0000',
+				// 				      fillOpacity: 0.35,
+				// 				      map: map,
+				// 				      center: pins[j].center,
+				// 				      radius: Math.sqrt(pins[j].population) * 100
+				// 				    });
+				// 				  }
+				// 				}
 				    	}
 				    	getCurrentLocationPin(lat, lng)
 	 			 
