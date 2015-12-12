@@ -1,0 +1,59 @@
+<form class="well container animated formClass" ng-class="vm.class" ng-submit="vm.Createtree()">
+	<center><h1>Add New Tree</h1><center>
+		<p> Right now we are only accepting trees located in San Francisco CA, parks. Please only submit trees within this location! All Submissions must have at least 3 pictures of the Tree, with at lease one representing a clear shot of the line, the correct Lng, Lat, aswell as a fair description of the climb. Please submit your information if you want credit for your climb. Thanks! </p>
+	<label>Name</label><br/>
+
+	<input required class="form-control" placeholder="Name your Tree Climb..." ng-model="vm.tree.title" />	
+
+	<label>Description</label><br/>
+
+	<input required class="form-control" placeholder="Description of route, holds, and beta..." ng-model="vm.tree.desc" />	
+
+	<label>Your Information</label><br/>
+	<p>Personal touch, anything that you want people to know or simply your name to take credit for your awsome climb!</p>
+
+	<input required class="form-control" placeholder="Description of route, holds, and beta..." ng-model="vm.tree.personal" />	
+
+	<label>Rating</label><br/>
+
+	<input required class="form-control" placeholder="Rate the difficulty of your climb..." ng-model="vm.tree.rating" />	
+
+	<label>Images</label><br/>
+	<p> All Images must be links to hosted Images! </p>
+
+	<input required class="form-control" placeholder="Image One..." ng-model="vm.tree.img1" />	
+
+	<input required class="form-control" placeholder="Image Two..." ng-model="vm.tree.img2" />
+
+	<input required class="form-control" placeholder="Image Three..." ng-model="vm.tree.img3" />	
+
+	<input class="form-control" placeholder="Image Four..." ng-model="vm.tree.img4" />	
+
+	<input  class="form-control" placeholder="Image Five..." ng-model="vm.tree.img5" />	
+
+	<input  class="form-control" placeholder="Image Six..." ng-model="vm.tree.img6" />	
+
+	<input  class="form-control" placeholder="Image Seven..." ng-model="vm.tree.img7" />	
+
+
+
+
+	<label>Longitude and Latitude</label>
+
+	<input required class="form-control" placeholder="Longitude..." ng-model="vm.tree.lat" />
+
+	<input required class="form-control" placeholder="Latitude..." ng-model="vm.tree.lng" />		
+
+	
+
+	<div style="text-align: center;">
+
+		<br><br>
+
+		<button type="submit" class="btn btn-success" ng-click="vm.class='fadeOutRight'">Submit</button>
+	</div>
+</form>
+<button class="btn btn-default" ng-click="vm.showMap()"> Search Location </button>
+	<div id="map" style="height: 400px; width: 80%;">
+
+	</div>
