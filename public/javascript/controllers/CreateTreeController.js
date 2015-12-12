@@ -34,10 +34,12 @@
 			vm.tree.created = new Date();
 			console.log('inside Createtree controller')
 			console.log(vm.tree)
+			vm.tree.park = vm.distance
 
 			// console.log(vm.tree)
 			HomeFactory.CreateNewTree(vm.tree).then(function(res){
 				// console.log('back to the state');
+				$state.go('Home');
 				// console.log('this is the res to creating tree ' + res);
 				$timeout(function() {
 					$state.go('Home');

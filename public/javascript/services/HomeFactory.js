@@ -8,30 +8,38 @@
 	function HomeFactory($http, $q, $rootScope) {
 		var o = {};
 		o.pin = {}
-		function getAuth() {
-			var auth = {
-				headers: {
-					Authorization: "Bearer " + localStorage.getItem("token")
-				}
-			}
-			return auth;
-		}
-		o.CreateNewPin = function(pin){
-			
-			pin.user = $rootScope._user.id
-			// console.log(pin)
-			
-			// pin.user = $rootScope.user.id
-			// console.log('this is user id'  + pin.user)
-			// console.log('creating new pin line 13')
-			console.log(pin)
+		// function getAuth() {
+		// 	var auth = {
+		// 		headers: {
+		// 			Authorization: "Bearer " + localStorage.getItem("token")
+		// 		}
+		// 	}
+		// 	return auth;
+		// }
+		o.CreateNewTree = function(tree){
+
+			console.log(tree)
 			var q = $q.defer();
-			$http.post('/pin', pin, getAuth()).success(function(res){
-				q.resolve();
+			$http.post('/tree', tree).success(function(res){
+				q.resolve(res);
 			})
 			return q.promise; 
 		}
-		
+		o.getTrees = function(){
+			var q = $q.defer();
+			$http.get('/tree').success(function(res){
+				q.resolve(res);
+			})
+			return q.promise;
+		}
+		o.getTree = function(id){
+			console.log('inside find tree' + id)
+			var q = $q.defer();
+			$http.get('/tree/' + id).success(function(res){
+				q.resolve(res);
+			})
+			return q.promise;
+		}
 		o.getPins = function(){
 			var q = $q.defer();
 			// console.log('inside homefactory')

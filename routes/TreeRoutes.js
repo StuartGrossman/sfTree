@@ -20,11 +20,13 @@ router.use('/', function (req, res, next){
 router.param('id', function (req, res, next, id) {
 	// console.log('in params function')
 	// console.log(id);
-	tree.findOne({_id:id}).populate([{path:'comments'}, {path: 'user'}]).exec(function (err, tree){
-		// console.log('this is the tree ' + tree)
-		req.tree = tree
+	Tree.findOne({_id:id}, function (err, response){
+		req.tree = response
 		next();
 	})
+		// console.log('this is the tree ' + tree)
+	
+
 	
 });
 // router.post('/delete/:id', auth, function (req, res){
@@ -101,6 +103,15 @@ router.get('/', function (req, res){
 	});
 })
 
+router.get('/:id', function(req, res){
+	// Tree.findOne({_id: req.id}, function(err, response){
+	// 	console.log(response)
+	// 	res.send(response);
+	// })
+	console.log('finding tree')
+	 console.log(req.tree)
+	 res.send(req.tree)
+})
 // router.get('/:id', function (req, res){
 // 		res.send(req.tree)
 // })

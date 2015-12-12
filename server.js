@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require('express'); 
 var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
@@ -6,14 +6,15 @@ var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var passport = require('passport'); //passport below mongoose
 //models here
-require('./models/Pin');
+require('./models/Tree');
 require('./models/User');
 require('./models/PinComment');
 //passport at the bottom of the models
 require('./config/passport');
-//connection
+//connectionpmn 
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/moment');
+// mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/moment');
+mongoose.connect('mongodb://localhost/sfClimb');
 app.set('views', path.join(__dirname, 'views'));
 //set the view engine that will render HTML from the server to the client
 app.engine('.html', require('ejs').renderFile);
@@ -33,15 +34,15 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(passport.initialize());
 
-var pinRoutes = require('./routes/PinRoutes');
+var treeRoutes = require('./routes/TreeRoutes');
 var userRoutes = require('./routes/UserRoutes');
-var commentRoutes = require('./routes/CommentRoutes');
+// var commentRoutes = require('./routes/CommentRoutes');
 // //on homepage load, render the index page
 app.get('/', function(req, res) {
   res.render('index');
 });
-app.use('/pin', pinRoutes);
-app.use('/comments', commentRoutes);
+app.use('/tree', treeRoutes);
+// app.use('/comments', commentRoutes);
 app.use('/users', userRoutes);
 
 var server = app.listen(port, function() {

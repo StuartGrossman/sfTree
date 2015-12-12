@@ -1,0 +1,11 @@
+<div class="container-fluid">
+	<div ng-repeat="trees in vm.parkInfo track by $index">
+		<a ui-sref="Tree({id:  trees._id})">
+		<div class="well" style="background-color: gray; height: 30%">
+		<label>{{trees.title}}</label> <br>
+		Grade : <label>{{trees.rating}}</label> <br>
+		<img src="{{trees.img1}}" class="img-responsive">
+		</div>
+		</a>
+	</div>
+</div>
